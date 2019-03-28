@@ -1,0 +1,21 @@
+package ability;
+
+import role.Enemy;
+import role.UserRole;
+
+public class RogueAbilityA extends Ability{
+
+
+    public RogueAbilityA(String name) {
+        super(name);
+        this.damage = 150;
+        this.heal = 50;
+    }
+
+    @Override
+    public void takeEffect(UserRole userRole, Enemy enemy) {
+        enemy.decreaseLp((int) (this.damage * userRole.getAbilityPower()));
+        userRole.increaseLp((int) (this.heal * userRole.getAbilityPower()));
+        this.damage += 5;
+    }
+}
